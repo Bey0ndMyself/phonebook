@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/phonebook?autoReconnect=true&useSSL=false
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: mysql-docker
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'phonebook'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql-data:
