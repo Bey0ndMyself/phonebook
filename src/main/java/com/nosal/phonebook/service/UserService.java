@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
-    private UserMapper userMapper;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     public void save(User user) {
         userRepository.save(userMapper.toEntity(user));
