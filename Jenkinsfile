@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'maven 3.6.3'
+    }
+
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0')
         booleanParam(name: 'executeTests', defaultValue: true)
@@ -10,6 +14,7 @@ pipeline {
         stage("build") {
             steps {
                 echo 'build stage'
+                sh 'mvn install'
             }
         }
         stage("test") {
