@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> add(@RequestBody @NotNull User user) {
         log.info("UserController#add user {}", user);
-        userService.save(user);
+        userService.save(user); 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
